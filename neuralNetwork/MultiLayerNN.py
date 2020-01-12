@@ -48,7 +48,6 @@ class NN:
             #error in output layer
             error_output = desired_output - output_layer_out
             deltat_predicted_output = error_output * self.__segmoid_derivative(output_layer_out)
-            
             #error in hidden layer
             error_hidden = deltat_predicted_output.dot(self.w_output_layer.T)
             deltat_hidden_layer = error_hidden * self.__segmoid_derivative(hidden_layer_out)
@@ -60,11 +59,11 @@ class NN:
             self.hidden_layer_bias += np.sum(deltat_hidden_layer,axis=0,keepdims=True) * self.learning_rate
             
 #train and use the modele
-#nn = NN(2,2,1)
-#inputs = np.array([[0.1,0.2]])
-#desired_output = np.array([[0.03]])
-#nn.train(inputs,desired_output,10000)
-#print(nn.predict(inputs))
+nn = NN(2,2,1)
+inputs = np.array([[0.1,0.2]])
+desired_output = np.array([[0.03]])
+nn.train(inputs,desired_output,10000)
+print(nn.predict(inputs))
 
 
 
